@@ -62,6 +62,42 @@ class GameStateOverride(GameExecutables):
             mult_values = {2: 300, 3: 200, 4: 150, 5: 100, 10: 50, 20: 30, 50: 15, 100: 8, 200: 3}
         symbol.assign_attribute({"wild_mult_values": mult_values})
 
+    def force_special_board(self, force_criteria: str, num_force_syms: int) -> None:
+        """Override to add retry limit and prevent infinite loops."""
+        max_retries = 1000  # Maximum number of attempts to force symbols
+        retry_count = 0
+        
+        while retry_count < max_retries:
+            self._force_special_board(force_criteria, num_force_syms)
+            
+            # Check if we got the required number of symbols
+            if (
+                force_criteria in self.config.special_symbols
+                and self.count_special_symbols(force_criteria) == num_force_syms
+            ):
+                break
+            elif (
+                not (force_criteria in self.config.special_symbols)
+                and self.count_symbols_on_board(force_criteria) == num_force_syms
+            ):
+                break
+            
+            retry_count += 1
+        
+        # If we exhausted retries, check if it's possible to force the symbols
+        if retry_count >= max_retries:
+            actual_count = (
+                self.count_special_symbols(force_criteria)
+                if force_criteria in self.config.special_symbols
+                else self.count_symbols_on_board(force_criteria)
+            )
+            raise RuntimeError(
+                f"Failed to force {num_force_syms} {force_criteria} symbols after {max_retries} attempts. "
+                f"Only found {actual_count} symbols. "
+                f"This likely means the reel strips don't have enough {force_criteria} symbols. "
+                f"Check reel strips and ensure they have sufficient {force_criteria} symbols."
+            )
+
     def check_repeat(self) -> None:
         """Checks if the spin failed a criteria constraint at any point."""
         if self.repeat is False:

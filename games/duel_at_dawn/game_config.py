@@ -184,7 +184,7 @@ class GameConfig(Config):
                             },
                             "scatter_triggers": {3: 100},  # Force 3 FS scatters
                             "force_wincap": False,
-                            "force_freegame": False,  # Temporarily disabled for testing
+                            "force_freegame": True,  # Re-enabled after fixing FR1.csv
                             "freegame_mode": "wild_wild_west",
                             "duel_mult_values": {k: int(v * 0.8) for k, v in duel_mult_values.items()},
                             "outlaw_mult_values": {k: int(v * 0.8) for k, v in outlaw_mult_values.items()},
@@ -201,7 +201,7 @@ class GameConfig(Config):
                             },
                             "scatter_triggers": {4: 100},  # Force 4 FS scatters
                             "force_wincap": False,
-                            "force_freegame": False,  # Temporarily disabled for testing
+                            "force_freegame": True,  # Re-enabled after fixing FR1.csv
                             "freegame_mode": "dusk_til_dawn",
                             "duel_mult_values": {k: int(v * 1.2) for k, v in duel_mult_values.items()},
                             "outlaw_mult_values": {k: int(v * 1.2) for k, v in outlaw_mult_values.items()},

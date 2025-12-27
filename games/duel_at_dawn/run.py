@@ -11,14 +11,14 @@ from src.write_data.write_configs import generate_configs
 
 if __name__ == "__main__":
 
-    num_threads = 2  # Reduced for testing
+    num_threads = 8  # Increased for faster simulation
     rust_threads = 20
-    batching_size = 1000  # Smaller batches for testing
+    batching_size = 50000  # Compatible with 3000 sims and 8 threads
     compression = False  # Disable compression for faster testing
     profiling = False
 
     num_sim_args = {
-        "base": int(1e3),  # 1000 sims for better book coverage
+        "base": int(3e3),  # 3000 sims for comprehensive book coverage
     }
 
     run_conditions = {

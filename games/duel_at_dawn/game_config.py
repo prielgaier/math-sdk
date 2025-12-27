@@ -168,7 +168,7 @@ class GameConfig(Config):
                             },
                             "scatter_triggers": {4: 1, 5: 2},
                             "force_wincap": True,
-                            "force_freegame": True,
+                            "force_freegame": False,  # Disabled to prevent infinite loops if reel strips can't trigger
                             "duel_mult_values": duel_mult_values,
                             "outlaw_mult_values": outlaw_mult_values,
                         },

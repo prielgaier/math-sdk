@@ -65,37 +65,30 @@ class GameConfig(Config):
         }
 
         # 19 Fixed Paylines for 5x5 grid
-        # Each payline is defined as [row_reel0, row_reel1, row_reel2, row_reel3, row_reel4]
-        # where row indices are 0-4 (0 = top row, 4 = bottom row)
-        # Based on the "WAYS TO WIN" payline diagram
         self.paylines = {
-            # Horizontal lines (5) - Straight across each row
-            1: [0, 0, 0, 0, 0],  # Top row horizontal
-            2: [1, 1, 1, 1, 1],  # Second row horizontal
-            3: [2, 2, 2, 2, 2],  # Middle row horizontal
-            4: [3, 3, 3, 3, 3],  # Fourth row horizontal
-            5: [4, 4, 4, 4, 4],  # Bottom row horizontal
-            # V-shapes (2)
-            6: [0, 1, 2, 1, 0],  # V-shape: top(0)-middle(1)-bottom(2)-middle(1)-top(0)
-            7: [2, 1, 0, 1, 2],  # Inverted V-shape: bottom(2)-middle(1)-top(0)-middle(1)-bottom(2)
-            # Diagonals (2)
-            8: [0, 1, 2, 3, 4],  # Diagonal: top-left(0) to bottom-right(4)
-            9: [4, 3, 2, 1, 0],  # Diagonal: bottom-left(4) to top-right(0)
-            # Zigzags (2)
-            10: [0, 1, 2, 1, 0],  # Zigzag: top-bottom-top-bottom-top pattern
-            11: [2, 1, 0, 1, 2],  # Zigzag: bottom-top-bottom-top-bottom pattern
-            # W-shapes (2)
-            12: [0, 1, 0, 1, 0],  # W-shape: top(0)-second(1)-top(0)-second(1)-top(0)
-            13: [2, 1, 2, 1, 2],  # W-shape variant: middle(2)-second(1)-middle(2)-second(1)-middle(2)
-            # Diagonal W-shapes (2)
-            14: [0, 1, 2, 3, 4],  # Diagonal W: top to bottom (same as diagonal 8 - needs correction)
-            15: [4, 3, 2, 1, 0],  # Diagonal W: bottom to top (same as diagonal 9 - needs correction)
-            # Diamond pattern (1)
-            16: [2, 1, 0, 1, 2],  # Diamond: middle(2)-second(1)-top(0)-second(1)-middle(2)
-            # Curved/Complex patterns (3)
-            17: [0, 0, 0, 1, 1],  # Top-left 3 positions, then middle-right 2 positions
-            18: [1, 1, 1, 0, 0],  # Middle-left 3 positions, then top-right 2 positions
-            19: [0, 1, 2, 1, 0],  # Complex X-pattern (needs correction based on image)
+            # Horizontal lines (5)
+            1: [0, 0, 0, 0, 0],
+            2: [1, 1, 1, 1, 1],
+            3: [2, 2, 2, 2, 2],
+            4: [3, 3, 3, 3, 3],
+            5: [4, 4, 4, 4, 4],
+            # W-shaped lines (5)
+            6: [0, 1, 0, 1, 0],
+            7: [1, 2, 1, 2, 1],
+            8: [2, 3, 2, 3, 2],
+            9: [3, 4, 3, 4, 3],
+            10: [1, 0, 1, 0, 1],
+            # M-shaped lines (5)
+            11: [4, 3, 4, 3, 4],
+            12: [3, 2, 3, 2, 3],
+            13: [2, 1, 2, 1, 2],
+            14: [1, 0, 1, 0, 1],
+            15: [0, 1, 0, 1, 0],
+            # Diagonal lines (4)
+            16: [0, 1, 2, 3, 4],
+            17: [4, 3, 2, 1, 0],
+            18: [0, 0, 1, 2, 2],
+            19: [4, 4, 3, 2, 2],
         }
 
         self.include_padding = True
